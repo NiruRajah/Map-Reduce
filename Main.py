@@ -13,12 +13,19 @@ col1 = db["DVD-testing"]
 col2 = db["DVD-training"]
 col = db["Dell-DVD-Datasets"]
 
-mapf = Code(open('mapCPU.js', 'r').read())
+mapf = Code(open('mapOfCPUUtilization_Average.js', 'r').read())
 
-reduceAvg = Code(open('reduceAvg.js', 'r').read())
+reduceForAverage = Code(open('reduceForAverage.js', 'r').read())
+
+reduceForNumberOfSamples = Code(open('reduceForNumberOfSamples.js', 'r').read())
 
 
 
-result = col.map_reduce(mapf, reduceAvg, 'myresults')
+
+result = col.map_reduce(mapf, reduceForAverage, 'myresults')
 for i in result.find():
+    print(i)
+
+result2 = col.map_reduce(mapf, reduceForNumberOfSamples, 'myresults2')
+for i in result2.find():
     print(i)
