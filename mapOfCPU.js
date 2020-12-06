@@ -45,7 +45,8 @@ function mapOfCPU()
     }
 
     var value = {
-                    count: 1, 
+                    count: 1,
+                    MemoryUtilization_Average: this.MemoryUtilization_Average,
                     sum: parseFloat(this.MemoryUtilization_Average),
                     min: parseFloat(this.MemoryUtilization_Average),
                     max: parseFloat(this.MemoryUtilization_Average),
