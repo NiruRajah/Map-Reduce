@@ -25,3 +25,4 @@ finalizeValue = Code(open('finalize.js', 'r').read())
 result = col.map_reduce(mapOfCPU, reduceValues, 'result', finalize=finalizeValue)
 for i in result.find():
     print(i)
+
