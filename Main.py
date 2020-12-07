@@ -6,7 +6,7 @@ import os
 import csv
 from datetime import datetime
 
-client = pymongo.MongoClient("mongodb+srv://Nirusan:CloudProject@mapreduce.k9wk8.mongodb.net/test?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://user:password@mapreduce.k9wk8.mongodb.net/test?retryWrites=true&w=majority")
 db = client["Workload"]
 col = db["Dell-DVD-Datasets"]
 
