@@ -1,5 +1,6 @@
 function reduce(key, valueObjects)
 {
+
 	return valueObjects.reduce(function z(previous, current, currentIndex, currentArray) 
 	{
 		var delta = Math.pow((current.sum/current.count) - (previous.sum/previous.count), 2);
@@ -17,6 +18,7 @@ function reduce(key, valueObjects)
 			}
 		
 		return {
+			counter: previous.counter + 1,
 			count: previous.count + current.count,
 			median: medianX,
 			sum: previous.sum + current.sum,

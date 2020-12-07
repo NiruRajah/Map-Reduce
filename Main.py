@@ -16,6 +16,7 @@ def printResults(result):
         str1 = str1.replace("{","")
         str1 = str1.replace("}","")
         str1 = str1.replace("'","")
+        str1 = str1.replace("counter","Number Of Times Reducer Ran")
         str1 = str1.replace("count","Number Of Samples")
         str1 = str1.replace("median","Median")
         str1 = str1.replace("min","Min")
