@@ -8,21 +8,33 @@ from datetime import datetime
 
 client = pymongo.MongoClient("mongodb+srv://Nirusan:CloudProject@mapreduce.k9wk8.mongodb.net/test?retryWrites=true&w=majority")
 db = client["Workload"]
-col1 = db["DVD-testing"]
-col2 = db["DVD-training"]
 col = db["Dell-DVD-Datasets"]
 
 mapOfCPU = Code(open('mapOfCPU.js', 'r').read())
-
-finalizeForAverage = Code(open('finalizeForAverage.js', 'r').read())
-
-reduceForNumberOfSamples = Code(open('reduceForNumberOfSamples.js', 'r').read())
 
 reduceValues = Code(open('reduce.js', 'r').read())
 
 finalizeValue = Code(open('finalize.js', 'r').read())
 
 result = col.map_reduce(mapOfCPU, reduceValues, 'result', finalize=finalizeValue)
-for i in result.find():
-    print(i)
 
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+for i in result.find():
+    print("Key: " + str(i['_id']))
+    print("Value: ")
+    str1 = str(i['value'])
+    str1 = str1.replace("{","")
+    str1 = str1.replace("}","")
+    str1 = str1.replace("'","")
+    str1 = str1.replace("count","Number Of Samples")
+    str1 = str1.replace("median","Median")
+    str1 = str1.replace("min","Min")
+    str1 = str1.replace("max","Max")
+    str1 = str1.replace("populationStandardDeviation","Population Standard Deviation")
+    str1 = str1.replace("sampleStandardDeviation","Sample Standard Deviation")
+
+    str1 = str1.split(", ")
+    for j in str1:
+        print("\t" + j)
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
